@@ -8,12 +8,19 @@ import (
 func main() {
   // Next step: read up https://godoc.org/github.com/google/go-github/github#NewClient
   client := github.NewClient(nil)
-  opt := &github.RepositoryListOptions{Type: "owner", Sort: "updated", Direction: "desc"}
-  repos, _, err := client.Repositories.List("mjbrender", opt)
+  cat, _, err := client.Octocat("")
   if err != nil {
-    fmt.Printf("Error : %v\n", err)
+    fmt.Printf("Error on Octocatting: %s\n", err)
   } else {
-    fmt.Printf("%v\n", github.Stringify(repos))
+    fmt.Printf("%s", cat)
   }
+
+  // opt := &github.RepositoryListOptions{Type: "owner", Sort: "updated", Direction: "desc"}
+  // repos, _, err := client.Repositories.List("mjbrender", opt)
+  // if err != nil {
+  //   fmt.Printf("Error : %v\n", err)
+  // } else {
+  //   fmt.Printf("%v\n", github.Stringify(repos))
+  // }
 
 }
